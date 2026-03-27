@@ -1,0 +1,742 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --sky-solid: 179, 230, 255;
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 0, 0, 0;
+    --sky-solid: 179, 230, 255;
+  }
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Kanit', sans-serif;
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--sky-solid));
+  min-height: 100vh;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+.info-box {
+  display: flex;
+  position: relative;
+  bottom: 20px;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 24px;
+  pointer-events: none;
+  align-items: center;
+  text-align: start;
+}
+
+/*=============================================*/
+.camera-hud {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 100%;
+  pointer-events: auto;
+  z-index: 10;
+  font-family: 'Kanit', sans-serif;
+  font-size: 30px;
+  text-align: center;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.camera-hud .Tab {
+  display: flex;
+  justify-content: center; /* จัดกลางแนวนอน */
+  align-items: center;     /* จัดกลางแนวตั้ง */
+}
+
+.camera-logo {
+  width: clamp(300px, 20vw, 400px);
+  height: auto;
+  cursor: pointer;
+  display: block;
+}
+.camera-logo-m {
+  width: clamp(30px, 70px, 100px); /* แก้ลำดับ clamp ให้ถูกต้อง */
+  height: auto;
+  cursor: pointer;
+  display: block;
+}
+/*====================================================*/
+.camera-hud2 {
+  position: absolute;
+  top: clamp(220px, 10vw, 350px);
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+  width: clamp(300px, 65vw, 600px);
+  font-weight: 900;
+  padding: clamp(15px, 2vw, 17px);
+  border-radius: 100px;
+  background-image: url("/imj/BICT.png"); /* ✅ path จาก public */
+  background-color: white;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: rgb(142, 56, 201);
+  font-family: 'Kanit', sans-serif;
+  font-size: clamp(10px, 3vw, 30px);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  pointer-events: none;
+  border: 3px solid rgb(142, 56, 201);
+}
+
+@keyframes expandHud {
+  0% { transform: translateX(-50%) scale(0); }
+  100% { transform: translateX(-50%) scale(1); }
+}
+
+@keyframes shrinkHud {
+  0% { transform: translateX(-50%) scale(1); }
+  100% { transform: translateX(-50%) scale(0); }
+}
+
+.camera-hud2.show { animation: expandHud 0.2s forwards ease-out; }
+.camera-hud2.hide { animation: shrinkHud 0.2s forwards ease-out; }
+
+.camera-hud3 {
+  position: fixed;
+  top: clamp(100px, 10vw, 150px);
+  left: 50%;
+  transform: translateX(-50%) scale(0);
+  width: clamp(100px, 100vw, 3000px);
+  opacity: 1;
+  pointer-events: none;
+  z-index: 10;
+  font-family: 'Kanit', sans-serif;
+  font-size: clamp(20px, 5vw, 30px);
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.camera-hud3.show { animation: expandHud 0.2s forwards ease-out; }
+.camera-hud3.hide { animation: shrinkHud 0.2s forwards ease-out; }
+/*=================================================================*/
+.T20{
+  font-size: 30px;
+  user-select: none;
+} 
+.T16{
+  font-size: 16px;
+  user-select: none;
+}.T20_S{
+  font-size: 24px;
+  padding: 0px 15px;
+  user-select: none;
+}.T20_S1{
+  padding: 10px 0px ;
+  font-size: 24px;
+  font-weight: 500 ;
+  user-select: none;
+}.T20_S2{
+  padding: 0px 10px 0px 0px;
+  font-size: 30px;
+  font-weight: 900;
+  letter-spacing: 2px; 
+  user-select: none;
+}
+.T20_S22{
+  padding: 8px 0px 0px 10px;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 2px; 
+  user-select: none;
+}
+.S2{
+   display: flex;
+}
+.TC {
+  background-color: #54545480;
+  font-size: 4px;
+  border-radius: 15px;
+  color: rgb(255, 255, 255,0);
+  padding: 0px;
+  pointer-events: none;
+  user-select: none;
+}
+.TC1 {
+  background-color: #54545480;
+  font-size: 3px;
+  border-radius: 15px;
+  color: rgb(255, 255, 255,0);
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 6px 0px;
+  pointer-events: none;
+  user-select: none;
+}
+.TC2 {
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+  border-radius: 15px;
+  color: #00BF63;
+  padding: 0px 0px 0px 0px;
+  margin: 0px 0px 6px 0px;
+  pointer-events: none;
+  user-select: none;
+}
+.TC3 {
+  display: flex;
+  width: 100%;
+  font-size: 14px;
+  color: #00BF63;
+  justify-content: center;
+}
+/*=================================================================*/
+.plot1 {
+  position: absolute;
+  top: clamp(100px, 120px, 150px);
+  left: 2%;
+  padding: 20px;
+  border-radius: 20px;
+  background-color: rgb(255, 255, 255,0.9); /* พื้นหลังโปร่งแสง */
+  z-index: 1;
+}
+
+/* กราฟแยกจาก plot1 */
+.plot1 .plot11 {
+  width: clamp(320px, 1vw, 900px);
+  height: clamp(100px, 230px, 500px);
+  background-color: rgb(255, 255, 255,0); /* แยกสีพื้นกราฟ */
+  border-radius: 10px;
+  padding: 2px;
+  font-family: 'Kanit', sans-serif;
+  pointer-events: none;
+}
+.plot1 .titplot1{
+  font-family: 'Kanit', sans-serif,;
+  color: #545454;
+  font-weight: 900;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-around;
+  padding: 5px;
+}
+.YS {
+  position: absolute;
+  top: 35%;
+  left: 68%;
+}
+
+.YCC {
+  font-family: "Kanit", sans-serif;
+  font-size: 16px;
+  font-weight: 900;
+  padding: 2px 15px;
+  border-radius: 20px;
+  background-color: white;
+  width: 100%;
+  outline: none;
+  cursor: pointer;
+  background: white;
+  border: 2px solid #545454; 
+}
+.plontbar1 {
+  background-color: white;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  font-family: 'Kanit', sans-serif;
+  justify-items: center;
+}
+/*---------------------------------------------------------------------*/
+.plot2 {
+  position: absolute;
+  top: clamp(20vw, 485px, 300vw);
+  left: 2%;
+  padding: 0px;
+  border-radius: 20px;
+  background-color: rgb(255, 255, 255,0.9); /* พื้นหลังโปร่งแสง */
+  z-index: 1;
+}
+
+/* กราฟแยกจาก plot1 */
+.plot2 .plot22 {
+  width: clamp(360px, 1vw, 900px);
+  height: clamp(100px, 220px, 1000px);
+  background-color: rgba(255, 255, 255,0); /* แยกสีพื้นกราฟ */
+  border-radius: 10px;
+  padding: 8px;
+  font-family: 'Kanit', sans-serif;
+  
+}
+.plot2 .titplot1{
+  font-family: 'Kanit', sans-serif,;
+  color: #545454;
+  font-weight: 900;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-around;
+  padding: 5px;
+}
+/*---------------------------------------------------------------------*/
+.plot3 .titplot1{
+  font-family: 'Kanit', sans-serif,;
+  color: #545454;
+  font-weight: 900;
+  font-size: 20px;
+  display: flex;
+  justify-content: space-around;
+  padding: 5px;
+}
+.plot3 {
+  position: absolute;
+  top: clamp(32vw, 775px, 200vw);
+  left: 2%;
+  padding: 0px;
+  border-radius: 20px;
+  background-color: rgb(255, 255, 255,0.9); /* พื้นหลังโปร่งแสง */
+  z-index: 1;
+}
+
+/* กราฟแยกจาก plot1 */
+.plot3 .plot33 {
+  width: clamp(360px, 1vw, 900px);
+  height: clamp(100px, 220px, 1000px);
+  background-color: rgba(255, 255, 255,0); /* แยกสีพื้นกราฟ */
+  border-radius: 10px;
+  padding: 8px;
+  font-family: 'Kanit', sans-serif;
+}
+/*---------------------------------------------------------------------*/
+.plot4 .titplot1{
+  font-family: 'Kanit', sans-serif,;
+  color: #545454;
+  font-weight: 900;
+  font-size: 20px;
+  display: flex;
+  pointer-events: none;
+  padding: 5px;
+}
+.plot4 {
+  position: absolute;
+  top: clamp(100px, 90px, 150px);  
+  right: 2%;
+  padding: 0px 0px;
+  border-radius: 20px;
+  background-color: rgb(255, 255, 255,0); /* พื้นหลังโปร่งแสง */
+  z-index: 1;
+}
+.plot4 img{
+  width: 420px;
+}
+/*---------------------------------------------------------------------*/
+.plot5 .titplot1{
+  font-family: 'Kanit', sans-serif,;
+  color: #FEA500;
+  width: clamp(332px, 120px, 500px);
+  display: flex;
+  justify-content: start;
+  padding: 5px;
+  font-family: 'Kanit', sans-serif;
+}
+.plot5 {
+  position: absolute;
+  top: clamp(250px, 120px, 320px);  
+  right: 2%;
+  padding: 20px 6px ;
+  border-radius: 20px;
+  background-color: rgb(255, 255, 255,0.9); /* พื้นหลังโปร่งแสง */
+  z-index: 1;
+  border: 4px solid #FEA500; 
+}
+.camera-logo2 {
+  width: clamp(180px, 20vw, 200px);
+  position: absolute;
+  height: auto;
+  right: 0%;
+  cursor: pointer;
+  display: block;
+  z-index: 10;
+  top: clamp(250px, 120px, 320px);  
+  pointer-events: none;
+}
+/*---------------------------------------------------------------------*/
+.plot6 .titplot1{
+  font-family: 'Kanit', sans-serif,;
+  color: #FF339A;
+  width: clamp(332px, 120px, 500px);
+  display: flex;
+  justify-content: start;
+  padding: 5px;
+  font-family: 'Kanit', sans-serif;
+}
+.plot6 {
+  position: absolute;
+  top: clamp(500px, 120px, 820px);  
+  right: 2%;
+  padding: 20px 6px ;
+  border-radius: 20px;
+  background-color: rgb(255, 255, 255,0.9); /* พื้นหลังโปร่งแสง */
+  z-index: 1;
+  border: 4px solid #FF339A; 
+}
+.camera-logo3 {
+  width: clamp(140px, 20vw, 160px);
+  height: auto;
+  position: absolute;
+  right: 0%;
+  cursor: pointer;
+  display: block;
+  z-index: 10;
+  top: clamp(520px, 200px, 800px);  
+  pointer-events: none;
+}
+/*---------------------------------------------------------------------*/
+.plot7 .titplot1{
+  font-family: 'Kanit', sans-serif,;
+  color: #0066CB;
+  width: clamp(332px, 120px, 500px);
+  display: flex;
+  justify-content: start;
+  padding: 5px;
+  font-family: 'Kanit', sans-serif;
+}
+.plot7 {
+  position: absolute;
+  top: clamp(750px, 120px, 900px);  
+  right: 2%;
+  height: auto;
+  padding: 20px 6px ;
+  border-radius: 20px;
+  background-color: rgb(255, 255, 255,0.9); /* พื้นหลังโปร่งแสง */
+  z-index: 1;
+  border: 4px solid #0066CB; 
+}
+.camera-logo4 {
+  width: clamp(160px, 18vw, 170px);
+  position: absolute;
+  height: auto;
+  right: 0%;
+  cursor: pointer;
+  display: block;
+  z-index: 10;
+  top: clamp(770px, 120px, 800px);  
+  pointer-events: none;
+}
+/*---------------------------------------------------------------------*/
+.BFM{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0,0.7);
+  z-index: 10;
+  opacity: 1;
+}
+.BF button{
+  color: white;
+  font-size: 24px;
+  font-family: 'Kanit', sans-serif;
+  padding: 0px 40px;
+}
+.BFF{
+position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(300px, 60vw, 1100px);
+  height: clamp(200px, 80vh, 800px);
+  background-color: rgb(255, 255, 255,0);
+  border-radius: 20px;
+  z-index: 10;
+  padding: 20px;
+}
+.BFF1{
+  background-color: white;
+  width: 30%;
+  height: 200px;
+  border-radius: 24px;
+  z-index: 10;
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  font-family: 'Kanit', sans-serif;
+  display: flex;
+}
+.BFF_Tab{
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 0px 20px 0px ;
+}
+.BFF_Tab2{
+  padding: 0px 0px 20px 0px ;
+}
+.BFF2{
+  background-color: white;
+  width: 100%;
+  height: 100px;
+  border-radius: 20px;
+  z-index: 10;
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+.BFF3{
+  background-color: white;
+  color: black;
+  width: 100%;
+  height: 550px;
+  overflow: auto;
+  border-radius: 20px;
+  z-index: 10;
+  padding: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+/*==========================================*/
+.BFF1_T1{
+  color: #FEA500;
+  font-weight: 600;
+  font-size: clamp(10px, 20px, 30px);
+  letter-spacing: 1px;
+}
+.BFF1_T1:hover{
+  color: #FEA500;
+  font-weight: 600;
+  font-size: clamp(10px, 20px, 30px);
+  letter-spacing: 1px;
+}
+.BFF1_T2{
+  color: #FEA500; 
+  font-weight: 600;
+  font-size: clamp(10px, 20px, 30px);
+  padding: 10px 0px 0px 0px;
+  letter-spacing: 1px;
+}
+.BFF1_T3{
+  display: flex;
+  color: #FEA500;
+  font-weight: 600;
+  font-size: 30px;
+  padding: 10px 0px;
+  letter-spacing: 1px;
+}
+.BFF1_T4{
+  position: absolute;
+  left: 150px;
+  top: 162px;
+  color: #FEA500;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 1px;
+}
+.logo-m{
+  position: absolute;
+  top: 6.2%;
+  left: 18.5%;
+  z-index: 12;
+}
+/*====================================*/
+.BFF1_T11{
+  color: #FF339A;
+  font-weight: 600;
+  font-size: clamp(10px, 20px, 30px);
+  letter-spacing: 1px;
+}
+.BFF1_T22{
+  color: #FF339A; 
+  font-weight: 600;
+  font-size: clamp(10px, 20px, 30px);
+  padding: 10px 0px 0px 0px;
+  letter-spacing: 1px;
+}
+.BFF1_T33{
+  display: flex;
+  color: #FF339A;
+  font-weight: 600;
+  font-size: 30px;
+  padding: 10px 0px;
+  letter-spacing: 1px;
+}
+.BFF1_T44{
+  position: absolute;
+  left: 525px;
+  top: 162px;
+  color: #FF339A;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 1px;
+}
+.logo-m1{
+  position: absolute;
+  top: 6.4%;
+  left: 53.6%;
+  z-index: 12;
+}
+/*====================================*/
+.BFF1_T111{
+  color: #0066CB;
+  font-weight: 600;
+  font-size: clamp(10px, 20px, 30px);
+  letter-spacing: 1px;
+}
+.BFF1_T222{
+  color: #0066CB; 
+  font-weight: 600;
+  font-size: clamp(10px, 20px, 30px);
+  padding: 10px 0px 0px 0px;
+  letter-spacing: 1px;
+}
+.BFF1_T333{
+  display: flex;
+  color: #0066CB;
+  font-weight: 600;
+  font-size: 30px;
+  padding: 10px 0px;
+  letter-spacing: 1px;
+}
+.BFF1_T444{
+  position: absolute;
+  right: 165PX;
+  top: 162px;
+  color: #0066CB;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 1px;
+}
+.logo-m2{
+  position: absolute;
+  top: 6.4%;
+  right: 1.8%;
+  z-index: 12;
+}
+/*-----------------------------------*/
+.BFF1-1{
+  position: absolute;
+  background-color: rgb(255, 255, 255,0);
+  width: 29%;
+  height: 200px;
+  border-radius: 24px;
+  z-index: 16;
+  padding: 20px;
+  font-family: 'Kanit', sans-serif;
+  display: flex;
+}
+.BFF1-1:hover{
+  height: 200px;
+  border: 8px solid #FEA500;
+  z-index: 16;
+}
+/*-------*/
+.BFF2-1{
+  position: absolute;
+  background-color: rgb(255, 255, 255,0);
+  width: 29%;
+  left: 35.5%;
+  height: 200px;
+  border-radius: 24px;
+  z-index: 15;
+  padding: 20px;
+  font-family: 'Kanit', sans-serif;
+  display: flex;
+}
+.BFF2-1:hover{
+  height: 200px;
+  left: 35.5%;
+  border: 8px solid #FF339A;
+  z-index: 15;
+}
+/*----------*/
+.BFF3-1{
+  position: absolute;
+  background-color: rgb(255, 255, 255,0);
+  width: 29.5%;
+  right: 0%;
+  height: 200px;
+  border-radius: 24px;
+  z-index: 15;
+  padding: 20px;
+  font-family: 'Kanit', sans-serif;
+  display: flex;
+}
+.BFF3-1:hover{
+  height: 200px;
+  right: 1.7%;
+  border: 8px solid #0066CB;
+  z-index: 15;
+}
+/*------------------*/
+.BFF3-1S{
+  position: absolute;
+  width: 29.5%;
+  height: 200px;
+  border-radius: 24px;
+  z-index: 15;
+  padding: 20px;
+  font-family: 'Kanit', sans-serif;
+  display: flex;
+  right: 1.7%;
+  border: 8px solid #0066CB;
+}
+.BFF2-1S{
+  position: absolute;
+  left: 35.5%;
+  width: 29%;
+  height: 200px;
+  border-radius: 24px;
+  z-index: 15;
+  padding: 20px;
+  font-family: 'Kanit', sans-serif;
+  display: flex;
+  border: 8px solid #FF339A;
+}
+.BFF1-1S{
+  position: absolute;
+  width: 29%;
+  height: 200px;
+  border-radius: 24px;
+  z-index: 15;
+  padding: 20px;
+  font-family: 'Kanit', sans-serif;
+  display: flex;
+  border: 8px solid #FEA500;
+}
+/*------------------------*/
+.legend {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+}
+.dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+}
+.orange { background-color: #FEA500; }
+.pink { background-color: #FF2DB0; }
+.blue { background-color: #0075FF; }
+.item1{
+  position: absolute;
+  font-family: 'Kanit', sans-serif;
+  right: 6%;
+  top: 50%; 
+}
+
