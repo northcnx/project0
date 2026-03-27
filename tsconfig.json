@@ -41,8 +41,11 @@
     "app/api/me/route.js",
     "app/api/user-calculations/route.js",
     "app/api/user-calculations/route.js",
-    ".next/dev/types/**/*.ts"
-, "app/api/userItem/delete/route.js", "app/api/adminitem/years/route.js"  ],
+    ".next/dev/types/**/*.ts",
+    "app/api/userItem/delete/route.js",
+    "app/api/adminitem/years/route.js",
+    "dish/types/**/*.ts"
+  ],
   "exclude": [
     "node_modules"
   ]
